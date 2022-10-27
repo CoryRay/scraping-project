@@ -3,7 +3,7 @@ import typer
 from rich import print
 from rich.console import Console
 from rich.table import Table
-from rich.prompt import Prompt
+from rich.prompt import Prompt, Confirm
 from TideScraper import TideScraper
 
 console = Console()
@@ -36,8 +36,7 @@ def main():
     selected_location_name = locations[location_index][0]
 
     # is this what user wanted?
-    confirm = Prompt.ask(get_content('confirm', selected_location_name))
-
+    confirm = Confirm.ask(get_content('confirm', selected_location_name))
     if not confirm:
         raise typer.Exit()
 
